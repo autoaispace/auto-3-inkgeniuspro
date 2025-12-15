@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                   {/* Left: Raw Sketch */}
                   <div className="relative h-full overflow-hidden bg-[#f0f0f0]">
                     <img 
-                      src="https://images.unsplash.com/photo-1578301978693-85ea400056e4?q=80&w=800&auto=format&fit=crop" 
+                      src="/images/raw-scan.svg" 
                       alt="Raw Sketch on Paper" 
                       className="absolute inset-0 w-full h-full object-cover filter contrast-125 grayscale"
                     />
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
                   {/* Right: Realistic Tattoo with Tech Overlay */}
                   <div className="relative h-full overflow-hidden bg-black">
                     <img 
-                      src="https://images.unsplash.com/photo-1542838686-37da4a9fd1b3?q=80&w=800&auto=format&fit=crop" 
+                      src="/images/tattoo-skin.svg" 
                       alt="Tattoo on Skin" 
                       className="absolute inset-0 w-full h-full object-cover opacity-90"
                     />

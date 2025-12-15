@@ -65,7 +65,7 @@ const ComparisonSection: React.FC = () => {
                />
                {/* Bad Overlay - Flat and fake */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 opacity-80">
-                  <img src="https://cdn-icons-png.flaticon.com/512/1545/1545660.png" className="w-full h-full drop-shadow-2xl" style={{ filter: 'invert(1)' }} alt="Flat Design" />
+                  <img src="/images/flat-icon.svg" className="w-full h-full drop-shadow-2xl" style={{ filter: 'invert(1)' }} alt="Flat Design" />
                </div>
                <div className="absolute top-6 left-6 flex items-center gap-2">
                  <div className="bg-red-500/10 border border-red-500/50 text-red-400 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest backdrop-blur-sm">
@@ -86,7 +86,7 @@ const ComparisonSection: React.FC = () => {
               />
               {/* Good Overlay - Wrapped and Blended */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 mix-blend-overlay opacity-90">
-                  <img src="https://cdn-icons-png.flaticon.com/512/1545/1545660.png" className="w-full h-full" style={{ filter: 'invert(1) blur(0.5px)', transform: 'perspective(500px) rotateY(15deg) rotateX(5deg) scale(0.95)' }} alt="Wrapped Design" />
+                  <img src="/images/flat-icon.svg" className="w-full h-full" style={{ filter: 'invert(1) blur(0.5px)', transform: 'perspective(500px) rotateY(15deg) rotateX(5deg) scale(0.95)' }} alt="Wrapped Design" />
                </div>
                {/* Skin Texture Noise */}
                <div className="absolute inset-0 bg-noise opacity-30 mix-blend-soft-light pointer-events-none"></div>

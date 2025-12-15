@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#1c1c27"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="36" fill="url(#grad)" stroke="#2d2d3a" stroke-width="4"/>
+  <circle cx="128" cy="128" r="78" fill="#0f172a" stroke="#3b82f6" stroke-width="8" opacity="0.85"/>
+  <path d="M88 110 L128 70 L168 110 L168 170 L88 170 Z" fill="#111827" stroke="#60a5fa" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M128 90 L148 110 L148 150 L108 150 L108 110 Z" fill="#1f2937" stroke="#93c5fd" stroke-width="4" stroke-linejoin="round"/>
+  <rect x="104" y="160" width="48" height="16" rx="8" fill="#d4af37" opacity="0.9"/>
+  <text x="128" y="206" font-size="14" font-family="JetBrains Mono, monospace" text-anchor="middle" fill="#cbd5e1">WRAP</text>
+</svg>
+

@@ -32,7 +32,7 @@ const Features: React.FC = () => {
               {/* Phone Mockup Content */}
               <div className="relative aspect-[9/18]">
                   <img 
-                    src="https://images.unsplash.com/photo-1597850781702-8356c9a91574?q=80&w=600&auto=format&fit=crop" 
+                    src="/images/phone-upload.svg" 
                     alt="Uploading custom design" 
                     className="w-full h-full object-cover opacity-80"
                   />

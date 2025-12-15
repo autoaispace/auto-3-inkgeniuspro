@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f7f7f7"/>
+      <stop offset="100%" stop-color="#e0e0e0"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="600" fill="url(#bg)"/>
+  <rect x="30" y="30" width="340" height="540" fill="none" stroke="#bdbdbd" stroke-width="3" stroke-dasharray="8 6"/>
+  <path d="M90 220 C150 120 240 120 280 220 S340 420 200 430 120 320 140 270" fill="none" stroke="#444" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="80" font-size="18" font-family="JetBrains Mono, monospace" text-anchor="middle" fill="#777">INPUT: RAW_SCAN.JPG</text>
+  <text x="200" y="560" font-size="14" font-family="JetBrains Mono, monospace" text-anchor="middle" fill="#999">Placeholder preview</text>
+</svg>
+
