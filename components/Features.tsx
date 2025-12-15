@@ -100,10 +100,6 @@ const Features: React.FC = () => {
                 {/* Print Animation Effect */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.5)] animate-scan-vertical opacity-0 group-hover:opacity-100"></div>
              </div>
-
-             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-ink-purple text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-indigo-900/50 flex items-center gap-2 text-sm whitespace-nowrap hover:bg-indigo-500 transition-colors cursor-pointer">
-                <ArrowDownToLine className="w-4 h-4" /> Download .PDF
-            </div>
           </div>
         </div>
 
