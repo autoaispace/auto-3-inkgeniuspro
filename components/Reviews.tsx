@@ -25,7 +25,7 @@ const Reviews: React.FC = () => {
           <p className="text-gray-500 font-mono text-sm">Based on 12,000+ generated stencils</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-6xl mx-auto">
           {/* User Review */}
           <div className="bg-[#0f0f0f] border border-white/10 p-8 rounded-xl relative hover:border-ink-gold/30 transition-colors group">
             <Quote className="absolute top-6 right-6 text-white/5 w-10 h-10 group-hover:text-ink-gold/20 transition-colors" />
@@ -57,6 +57,39 @@ const Reviews: React.FC = () => {
                 <div className="text-xs text-ink-blue font-mono uppercase flex items-center gap-1">
                    <Feather className="w-3 h-3" /> BlackAnchor Studio
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Studio Owner */}
+          <div className="bg-[#0f0f0f] border border-white/10 p-8 rounded-xl relative hover:border-ink-gold/30 transition-colors group">
+            <Quote className="absolute top-6 right-6 text-white/5 w-10 h-10 group-hover:text-ink-gold/20 transition-colors" />
+            <p className="text-lg text-gray-300 italic mb-8 relative z-10 leading-relaxed font-light">
+              "We run four chairs. Showing realistic previews cut back-and-forth by half and bumped close rates. It’s now in every consult checklist."
+            </p>
+            <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+              <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=100&h=100" alt="Studio Owner" className="w-10 h-10 rounded-full grayscale object-cover" />
+              <div>
+                <div className="text-white font-serif font-bold">Sara L.</div>
+                <div className="text-xs text-gray-500 font-mono uppercase">Studio Owner • Austin</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Repeat Client */}
+          <div className="bg-gradient-to-br from-[#0f0f0f] to-[#161625] border border-ink-blue/20 p-8 rounded-xl relative hover:border-ink-blue/40 transition-colors">
+            <div className="absolute -top-3 left-8 bg-ink-blue text-white text-[10px] font-mono font-bold px-3 py-1 rounded-sm uppercase tracking-wider shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+              Returning Client
+            </div>
+            <Quote className="absolute top-6 right-6 text-ink-blue/10 w-10 h-10" />
+            <p className="text-lg text-gray-300 italic mb-8 relative z-10 leading-relaxed font-light">
+              "Second sleeve planned entirely in InkGenius. We tested placements in minutes. Zero surprises on session day."
+            </p>
+            <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=100&h=100" alt="Returning Client" className="w-10 h-10 rounded-full grayscale object-cover" />
+              <div>
+                <div className="text-white font-serif font-bold">Diego M.</div>
+                <div className="text-xs text-ink-blue font-mono uppercase">Repeat Client • Madrid</div>
               </div>
             </div>
           </div>
