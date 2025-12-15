@@ -7,7 +7,7 @@ const Features: React.FC = () => {
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
 
-      <div className="container mx-auto px-4 md:px-8 space-y-32 relative z-10">
+      <div className="container mx-auto px-4 md:px-8 space-y-0 relative z-10">
         
         {/* Feature A: Custom Uploads */}
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
@@ -32,7 +32,7 @@ const Features: React.FC = () => {
               {/* Phone Mockup Content */}
               <div className="relative aspect-[9/18]">
                   <img 
-                    src="/images/phone-upload.svg" 
+                    src="/images/phone-upload.png" 
                     alt="Uploading custom design" 
                     className="w-full h-full object-cover opacity-80"
                   />
@@ -80,19 +80,17 @@ const Features: React.FC = () => {
                 <div className="absolute top-2 -right-2 w-full h-full bg-[#3a3a5e] rounded shadow-lg border border-white/5"></div>
                 
                 {/* Main Thermal Paper */}
-                <div className="absolute inset-0 stencil-paper rounded shadow-2xl overflow-hidden flex flex-col items-center p-8">
+                <div className="absolute inset-0 stencil-paper rounded shadow-2xl overflow-hidden flex flex-col items-center p-0">
                      {/* Perforation Top */}
                      <div className="absolute top-0 left-0 w-full h-4 bg-white/50 border-b border-dashed border-gray-400"></div>
 
-                    <div className="w-full h-full border-2 border-indigo-900/20 p-4 flex items-center justify-center relative">
+                    <div className="w-full h-full border-2 border-indigo-900/20 relative overflow-hidden rounded-lg">
                          {/* SVG Line Art */}
-                         <svg viewBox="0 0 100 100" className="w-full h-full stroke-indigo-900 stroke-[0.8] fill-none drop-shadow-sm filter blur-[0.3px]">
-                            <path d="M50 15 Q85 15 85 45 T50 75 T15 45 T50 15" />
-                            <circle cx="50" cy="45" r="10" />
-                            <path d="M50 75 L50 95" />
-                            <path d="M50 85 L20 65" />
-                            <path d="M50 85 L80 65" />
-                         </svg>
+                          <img
+                            src="/images/Tech_Mesh.png"
+                            alt="Stencil Line Art"
+                            className="absolute inset-0 w-full h-full object-cover scale-[1.05]"
+                          />
                          
                          {/* Watermark */}
                          <div className="absolute bottom-2 right-2 text-[8px] font-mono text-indigo-900/40 rotate-180">INKGENIUS_PRO</div>

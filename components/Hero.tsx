@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
                   {/* Left: Raw Sketch */}
                   <div className="relative h-full overflow-hidden bg-[#f0f0f0]">
                     <img 
-                      src="/images/raw-scan.svg" 
+                      src="/images/raw-scan.png" 
                       alt="Raw Sketch on Paper" 
                       className="absolute inset-0 w-full h-full object-cover filter contrast-125 grayscale"
                     />
@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
                     {/* Raw Input Label */}
                     <div className="absolute top-4 left-4">
                       <div className="bg-black/80 backdrop-blur border border-white/10 px-3 py-1 text-[10px] font-mono text-white uppercase tracking-widest">
-                        INPUT: RAW_SCAN.JPG
+                        RAW_SCAN
                       </div>
                     </div>
                   </div>
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
                   {/* Right: Realistic Tattoo with Tech Overlay */}
                   <div className="relative h-full overflow-hidden bg-black">
                     <img 
-                      src="/images/tattoo-skin.svg" 
+                      src="/images/tattoo-skin.png" 
                       alt="Tattoo on Skin" 
                       className="absolute inset-0 w-full h-full object-cover opacity-90"
                     />
