@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ShieldCheck, ScanFace } from 'lucide-react';
 import Button from './Button';
+import EmailModal from './EmailModal';
 
 const Hero: React.FC = () => {
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
   return (
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
       {/* Background Glow */}
@@ -37,8 +39,7 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button variant="primary" icon>UPLOAD SKETCH</Button>
-              <Button variant="secondary">GENERATE DESIGN</Button>
+              <Button variant="primary" icon onClick={() => setIsEmailModalOpen(true)}>Try Now</Button>
             </div>
 
             <div className="flex items-center gap-3 pt-6 border-t border-white/10">
@@ -113,6 +114,7 @@ const Hero: React.FC = () => {
 
         </div>
       </div>
+      <EmailModal isOpen={isEmailModalOpen} onClose={() => setIsEmailModalOpen(false)} />
     </section>
   );
 };

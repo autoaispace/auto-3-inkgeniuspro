@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
+import EmailModal from './EmailModal';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,8 +39,7 @@ const Navbar: React.FC = () => {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-6">
-          <button className="text-sm font-medium text-white hover:text-ink-gold transition-colors">Login</button>
-          <Button variant="primary" className="py-2 px-5 text-sm">Start Previewing</Button>
+          <Button variant="primary" className="py-2 px-5 text-sm" onClick={() => setIsEmailModalOpen(true)}>Try Now</Button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -56,10 +57,10 @@ const Navbar: React.FC = () => {
           <a href="#features" className="text-lg text-gray-200 hover:text-ink-gold" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
           <a href="#reviews" className="text-lg text-gray-200 hover:text-ink-gold" onClick={() => setIsMobileMenuOpen(false)}>Reviews</a>
           <hr className="border-white/10 my-2" />
-          <button className="text-left text-lg text-white hover:text-ink-gold">Login</button>
-          <Button variant="primary" className="w-full">Start Previewing</Button>
+          <Button variant="primary" className="w-full" onClick={() => { setIsEmailModalOpen(true); setIsMobileMenuOpen(false); }}>Try Now</Button>
         </div>
       )}
+      <EmailModal isOpen={isEmailModalOpen} onClose={() => setIsEmailModalOpen(false)} />
     </nav>
   );
 };
