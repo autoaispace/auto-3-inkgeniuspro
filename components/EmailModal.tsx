@@ -10,6 +10,7 @@ interface EmailModalProps {
 const EmailModal: React.FC<EmailModalProps> = ({ isOpen, onClose }) => {
   const [step, setStep] = useState<'email' | 'success' | 'queue'>('email');
   const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [copied, setCopied] = useState(false);
   const [vipClicked, setVipClicked] = useState(false);
   const [userId] = useState(() => {
@@ -20,14 +21,36 @@ const EmailModal: React.FC<EmailModalProps> = ({ isOpen, onClose }) => {
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   const referralUrl = `${baseUrl}?ref=${userId}`;
 
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (value && !validateEmail(value)) {
+      setEmailError('Please enter a valid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && email.includes('@')) {
-      setStep('success');
-      setTimeout(() => {
-        setStep('queue');
-      }, 1500);
+    if (!email) {
+      setEmailError('Email is required');
+      return;
     }
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email address');
+      return;
+    }
+    setEmailError('');
+    setStep('success');
+    setTimeout(() => {
+      setStep('queue');
+    }, 1500);
   };
 
   const handleCopyLink = () => {
@@ -43,8 +66,8 @@ const EmailModal: React.FC<EmailModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-      <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl max-w-md w-full p-8 animate-fade-in-down">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+      <div className="relative bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl max-w-3xl w-full p-8 md:p-12 my-8 animate-fade-in-down">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
@@ -67,11 +90,15 @@ const EmailModal: React.FC<EmailModalProps> = ({ isOpen, onClose }) => {
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleEmailChange}
                   placeholder="Enter your email"
-                  className="w-full px-4 py-3 bg-[#111] border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-ink-gold/50 transition-colors"
-                  required
+                  className={`w-full px-4 py-3 bg-[#111] border rounded-lg text-white placeholder-gray-500 focus:outline-none transition-colors ${
+                    emailError ? 'border-red-500/50' : 'border-white/10 focus:border-ink-gold/50'
+                  }`}
                 />
+                {emailError && (
+                  <p className="text-red-400 text-xs mt-2">{emailError}</p>
+                )}
               </div>
               <Button variant="primary" type="submit" className="w-full">
                 Subscribe
@@ -91,69 +118,93 @@ const EmailModal: React.FC<EmailModalProps> = ({ isOpen, onClose }) => {
         )}
 
         {step === 'queue' && (
-          <div className="space-y-6">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-ink-gold/10 border border-ink-gold/20 mb-4">
-                <Users className="w-8 h-8 text-ink-gold" />
+          <div className="space-y-8">
+            {/* Queue Status Header */}
+            <div className="text-center border-b border-white/10 pb-6">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-ink-gold/10 border border-ink-gold/20 mb-4">
+                <Users className="w-10 h-10 text-ink-gold" />
               </div>
-              <h3 className="text-2xl font-serif text-white mb-2">You're in Queue!</h3>
-              <div className="text-4xl font-serif text-ink-gold mb-2">#{queuePosition}</div>
-              <p className="text-gray-400 text-sm">Your position in line</p>
+              <h3 className="text-3xl font-serif text-white mb-3">You're in Queue!</h3>
+              <div className="text-5xl font-serif text-ink-gold mb-2">#{queuePosition}</div>
+              <p className="text-gray-400">Your position in line</p>
             </div>
 
-            <div className="space-y-4">
-              <p className="text-center text-gray-300 text-sm">Want to move up faster?</p>
+            {/* Accelerate Options Section */}
+            <div className="space-y-6">
+              <div className="text-center">
+                <h4 className="text-xl font-serif text-white mb-2">Move Up Faster</h4>
+                <p className="text-gray-400 text-sm">Choose your preferred acceleration method</p>
+              </div>
               
-              <div className="grid grid-cols-2 gap-4">
-                {/* Free Accelerate */}
-                <div className="bg-[#111] border border-white/10 rounded-lg p-4 space-y-3">
-                  <div className="flex items-center gap-2 text-ink-blue mb-2">
-                    <Users className="w-4 h-4" />
-                    <span className="text-xs font-mono uppercase">Free Boost</span>
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Free Accelerate - More Prominent */}
+                <div className="bg-gradient-to-br from-[#111] to-[#1a1a2e] border-2 border-ink-blue/30 rounded-xl p-6 space-y-4 hover:border-ink-blue/50 transition-all">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-full bg-ink-blue/20 flex items-center justify-center">
+                      <Users className="w-6 h-6 text-ink-blue" />
+                    </div>
+                    <div>
+                      <h5 className="text-lg font-serif text-white">Free Boost</h5>
+                      <p className="text-xs text-gray-400 font-mono uppercase">Invite Friends</p>
+                    </div>
                   </div>
-                  <p className="text-xs text-gray-400 mb-3">Invite friends to jump ahead</p>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    Share your referral link with friends. Each friend who joins moves you up in the queue!
+                  </p>
                   <button
                     onClick={handleCopyLink}
-                    className="w-full px-3 py-2 bg-ink-blue/10 border border-ink-blue/30 rounded text-xs text-ink-blue hover:bg-ink-blue/20 transition-colors flex items-center justify-center gap-2"
+                    className="w-full px-4 py-3 bg-ink-blue/20 border-2 border-ink-blue/40 rounded-lg text-sm font-semibold text-ink-blue hover:bg-ink-blue/30 hover:border-ink-blue/60 transition-all flex items-center justify-center gap-2"
                   >
                     {copied ? (
                       <>
-                        <Check className="w-3 h-3" />
-                        Copied!
+                        <Check className="w-4 h-4" />
+                        Link Copied!
                       </>
                     ) : (
                       <>
-                        <Copy className="w-3 h-3" />
-                        Copy Link
+                        <Copy className="w-4 h-4" />
+                        Copy Referral Link
                       </>
                     )}
                   </button>
                 </div>
 
-                {/* VIP Accelerate */}
-                <div className="bg-[#111] border border-ink-gold/30 rounded-lg p-4 space-y-3">
-                  <div className="flex items-center gap-2 text-ink-gold mb-2">
-                    <Zap className="w-4 h-4" />
-                    <span className="text-xs font-mono uppercase">VIP Boost</span>
+                {/* VIP Accelerate - More Prominent */}
+                <div className="bg-gradient-to-br from-[#111] to-[#2a1a0e] border-2 border-ink-gold/40 rounded-xl p-6 space-y-4 hover:border-ink-gold/60 transition-all relative">
+                  {!vipClicked && (
+                    <div className="absolute -top-3 -right-3 bg-ink-gold text-black text-xs font-bold px-3 py-1 rounded-full">
+                      FASTEST
+                    </div>
+                  )}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 rounded-full bg-ink-gold/20 flex items-center justify-center">
+                      <Zap className="w-6 h-6 text-ink-gold" />
+                    </div>
+                    <div>
+                      <h5 className="text-lg font-serif text-white">VIP Boost</h5>
+                      <p className="text-xs text-gray-400 font-mono uppercase">Skip the Line</p>
+                    </div>
                   </div>
                   {!vipClicked ? (
                     <>
-                      <p className="text-xs text-gray-400 mb-3">Skip the line instantly</p>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        Jump to the front of the queue instantly. Get immediate access to InkGenius PRO.
+                      </p>
                       <button
                         onClick={handleVipClick}
-                        className="w-full px-3 py-2 bg-ink-gold text-black rounded text-xs font-bold hover:bg-ink-goldHover transition-colors"
+                        className="w-full px-4 py-3 bg-ink-gold text-black rounded-lg text-sm font-bold hover:bg-ink-goldHover transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)]"
                       >
                         $9.9 Pay Now
                       </button>
                     </>
                   ) : (
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2 text-orange-400 text-xs mb-2">
-                        <AlertCircle className="w-3 h-3" />
-                        <span className="font-mono">SOLD OUT</span>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2 text-orange-400 mb-3">
+                        <AlertCircle className="w-5 h-5" />
+                        <span className="font-mono font-bold text-sm">SOLD OUT</span>
                       </div>
-                      <p className="text-xs text-gray-400 mb-2">
-                        Sorry! Today's VIP slots are full. Try again tomorrow, or use the free boost option.
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        Sorry! Today's VIP slots are full. Try again tomorrow, or use the free boost option on the left.
                       </p>
                     </div>
                   )}

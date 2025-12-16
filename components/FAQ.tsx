@@ -12,10 +12,6 @@ const FAQ: React.FC = () => {
     {
       question: "Does it work on dark skin tones?",
       answer: "Yes. Our lighting engine automatically adapts to all skin tones (Fitzpatrick Scale 1-6) to ensure the ink looks realistic and blends naturally with your specific complexion."
-    },
-    {
-      question: "Is this a monthly subscription?",
-      answer: "No. You pay $9.90 once and you own your designs and account forever. No hidden fees, no recurring charges."
     }
   ];
 
